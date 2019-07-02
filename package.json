@@ -1,0 +1,22 @@
+{
+  "name": "cruise-ships",
+  "version": "1.0.0",
+  "description": "cruise-ships",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest -verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/HollyRebekah/cruise-ships.git"
+  },
+  "author": "Holly Fanthorpe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HollyRebekah/cruise-ships/issues"
+  },
+  "homepage": "https://github.com/HollyRebekah/cruise-ships#readme",
+  "dependencies": {
+    "jest": "^24.8.0"
+  }
+}
