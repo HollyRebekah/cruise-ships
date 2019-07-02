@@ -1,6 +1,6 @@
 const Ship = require('../src/ship');
 
-describe('constructor', () => {
+describe('ship constructor', () => {
     let ship
     beforeEach(() => {
         ship = new Ship ('Southampton')
@@ -14,8 +14,8 @@ describe('constructor', () => {
         expect(ship.passengers).toEqual([]);
     });
 
-    it('sets the starting point property', () => {
-        expect(ship.startingPoint).toEqual('Southampton');
+    it('sets the starting port property', () => {
+        expect(ship.startingPort).toEqual('Southampton');
     });
 });
 
@@ -35,3 +35,16 @@ describe('boarding function', () => {
         expect(ship.passengers).toEqual(['Holly','Mo'])
     })
 });
+
+describe ('set sail function', () => {
+    let ship
+    beforeEach(() => {
+        ship = new Ship('Southampton')
+    });
+
+    it('can set sail', () => {
+        ship.setSail()
+        expect(ship.startPoing).toBeFalsy();
+    })
+
+})
