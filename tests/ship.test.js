@@ -47,4 +47,5 @@ describe ('set sail function', () => {
         expect(ship.startPoing).toBeFalsy();
     })
 
-})
+});
+
