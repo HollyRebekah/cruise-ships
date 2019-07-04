@@ -1,9 +1,12 @@
 const Ship = require('../src/ship');
+const Port = require('../src/port');
 
 describe('ship constructor', () => {
     let ship
+    let port
     beforeEach(() => {
-        ship = new Ship ('Southampton')
+        port = new Port ('Southampton')
+        ship = new Ship (port)
     });
     
     it('returns an object', () => {
@@ -15,7 +18,7 @@ describe('ship constructor', () => {
     });
 
     it('sets the starting port property', () => {
-        expect(ship.startingPort).toEqual('Southampton');
+        expect(ship.currentPort).toEqual(port);
     });
 });
 
@@ -38,14 +41,31 @@ describe('boarding function', () => {
 
 describe ('set sail function', () => {
     let ship
+    let port
     beforeEach(() => {
-        ship = new Ship('Southampton')
+        port = new Port ('Southampton');
+        ship = new Ship(port);
     });
 
     it('can set sail', () => {
-        ship.setSail()
-        expect(ship.startPoing).toBeFalsy();
+        ship.setSail();
+        expect(ship.currentPort).toBeFalsy();
     })
 
+});
+
+describe('dock function', () => {
+    let ship
+    let port
+    beforeEach(() => {
+        port = new Port ('Southampton');
+        port2 = new Port ('Calais');
+        ship = new Ship (port);
+    });
+
+    it('can dock the ship at a new port', () => {
+        ship.dock(port2);
+        expect(ship.currentPort).toBe(port2);
+    });
 });
 

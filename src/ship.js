@@ -1,6 +1,6 @@
 function Ship (port) {
     this.passengers = []
-    this.startingPort = port
+    this.currentPort = port
 }; 
 
 Ship.prototype = { 
@@ -11,7 +11,11 @@ Ship.prototype = {
         },
     
     setSail: function () {
-        this.startingPort = undefined
+        this.currentPort = undefined
+    },
+
+    dock: function (newPort) {
+        this.currentPort = newPort;
     }
 };
 
