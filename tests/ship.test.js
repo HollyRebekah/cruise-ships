@@ -20,6 +20,10 @@ describe('ship constructor', () => {
     it('sets the starting port property', () => {
         expect(ship.currentPort).toEqual(port);
     });
+
+    it('gets added to port on instantiation',() => {
+        
+    })
 });
 
 describe('boarding function', () => {
