@@ -55,17 +55,18 @@ describe ('set sail function', () => {
 });
 
 describe('dock function', () => {
+    let southampton
     let ship
-    let port
+    let calais
     beforeEach(() => {
-        port = new Port ('Southampton');
-        port2 = new Port ('Calais');
-        ship = new Ship (port);
+        southampton = new Port ('Southampton');
+        calais = new Port ('Calais');
+        ship = new Ship (southampton);
     });
 
     it('can dock the ship at a new port', () => {
-        ship.dock(port2);
-        expect(ship.currentPort).toBe(port2);
+        ship.dock(calais);
+        expect(ship.currentPort).toBe(calais);
     });
 });
 

@@ -11,7 +11,7 @@ Ship.prototype = {
         },
     
     setSail: function () {
-        this.currentPort = undefined
+        this.currentPort = undefined;
     },
 
     dock: function (newPort) {
