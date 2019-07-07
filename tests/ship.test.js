@@ -79,5 +79,10 @@ describe('dock function', () => {
         ship.dock(calais);
         expect(ship.currentPort).toBe(calais);
     });
+
+    it('adds ship to port object when dock function i called', () => {
+        ship.dock(calais);
+        expect(calais.ships).toContain(ship)
+    })
 });
 

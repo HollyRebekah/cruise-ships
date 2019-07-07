@@ -19,6 +19,7 @@ Ship.prototype = {
 
     dock: function (newPort) {
         this.currentPort = newPort;
+        this.currentPort.addShip(this)
     }
 };
 
