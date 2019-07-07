@@ -1,35 +1,38 @@
 const Ship = require('../src/ship');
 const Port = require('../src/port');
+const Itinerary = require('../src/itinerary');
 
 describe('ship constructor', () => {
-    let ship
-    let port
+    let southampton
+    let itinerary
+    let titanic 
     beforeEach(() => {
-        port = new Port ('Southampton')
-        ship = new Ship (port)
+        southampton = new Port ('Southampton')
+        itinerary = new Itinerary (southampton)
+        titanic = new Ship(itinerary)
     });
     
     it('returns an object', () => {
-        expect(new Ship()).toBeInstanceOf(Object);
-    });
-
-    it('initializes with an empty array of passengers', () => {
-        expect(ship.passengers).toEqual([]);
+        expect(titanic).toBeInstanceOf(Object);
     });
 
     it('sets the starting port property', () => {
-        expect(ship.currentPort).toEqual(port);
+        expect(titanic.currentPort).toEqual(southampton);
     });
 
     it('gets added to port on instantiation',() => {
-        
-    })
+       expect(southampton.ships).toContain(titanic);
+    });
 });
 
 describe('boarding function', () => {
     let ship
+    let intinerary
+    let port
     beforeEach(() => {
-        ship = new Ship('Southampton')
+        port = new Port ('Southampton');
+        itinerary = new Itinerary(port)
+        ship = new Ship(itinerary);
     });
 
     it('takes a passenger and adds it to the ship passenger property', () => {
@@ -45,10 +48,12 @@ describe('boarding function', () => {
 
 describe ('set sail function', () => {
     let ship
+    let itinerary
     let port
     beforeEach(() => {
         port = new Port ('Southampton');
-        ship = new Ship(port);
+        itinerary = new Itinerary(port)
+        ship = new Ship(itinerary);
     });
 
     it('can set sail', () => {
@@ -62,10 +67,12 @@ describe('dock function', () => {
     let southampton
     let ship
     let calais
+    let itinerary
     beforeEach(() => {
         southampton = new Port ('Southampton');
         calais = new Port ('Calais');
-        ship = new Ship (southampton);
+        itinerary = new Itinerary (southampton);
+        ship = new Ship (itinerary);
     });
 
     it('can dock the ship at a new port', () => {

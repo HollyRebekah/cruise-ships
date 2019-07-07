@@ -1,6 +1,9 @@
-function Ship (port) {
-    this.passengers = []
-    this.currentPort = port
+function Ship (itinerary) {
+    this.passengers = [];
+    this.itinerary = itinerary;
+    this.currentPort = itinerary.ports[0];
+    this.previousPort = null;
+    this.currentPort.addShip(this);
 }; 
 
 Ship.prototype = { 
@@ -19,4 +22,4 @@ Ship.prototype = {
     }
 };
 
-module.exports = Ship
+module.exports = Ship;
