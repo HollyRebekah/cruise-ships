@@ -3,37 +3,28 @@ const Port = require('../src/port');
 const Itinerary = require('../src/itinerary');
 
 describe('ship constructor', () => {
-    let southampton
+    let port
     let itinerary
-    let titanic 
+    let ship
     beforeEach(() => {
-        southampton = new Port ('Southampton')
-        itinerary = new Itinerary (southampton)
-        titanic = new Ship(itinerary)
+        port = new Port ('Southampton')
+        itinerary = new Itinerary (port)
+        ship= new Ship(itinerary)
     });
     
     it('returns an object', () => {
-        expect(titanic).toBeInstanceOf(Object);
+        expect(ship).toBeInstanceOf(Object);
     });
 
     it('sets the starting port property', () => {
-        expect(titanic.currentPort).toEqual(southampton);
+        expect(ship.currentPort).toEqual(port);
     });
 
     it('gets added to port on instantiation',() => {
-       expect(southampton.ships).toContain(titanic);
+       expect(port.ships).toContain(ship);
     });
-});
 
 describe('boarding function', () => {
-    let ship
-    let intinerary
-    let port
-    beforeEach(() => {
-        port = new Port ('Southampton');
-        itinerary = new Itinerary(port)
-        ship = new Ship(itinerary);
-    });
 
     it('takes a passenger and adds it to the ship passenger property', () => {
         ship.boarding('Holly');
@@ -47,17 +38,12 @@ describe('boarding function', () => {
 });
 
 describe ('set sail function', () => {
-    let ship
-    let itinerary
-    let port
-    beforeEach(() => {
-        port = new Port ('Southampton');
-        itinerary = new Itinerary(port)
-        ship = new Ship(itinerary);
-        ship.setSail();
-    });
 
-    it('can set sail', () => {
+    beforeEach(() => {
+        ship.setSail()
+    })
+
+    it('removes port from ship when it sets sail', () => {
         expect(ship.currentPort).toBeFalsy();
     });
 
@@ -68,25 +54,19 @@ describe ('set sail function', () => {
 });
 
 describe('dock function', () => {
-    let southampton
-    let ship
-    let calais
-    let itinerary
+
     beforeEach(() => {
-        southampton = new Port ('Southampton');
-        calais = new Port ('Calais');
-        itinerary = new Itinerary (southampton);
-        ship = new Ship (itinerary);
+        ship.dock(port)
     });
 
     it('can dock the ship at a new port', () => {
-        ship.dock(calais);
-        expect(ship.currentPort).toBe(calais);
+        expect(ship.currentPort).toBe(port);
     });
 
     it('adds ship to port object when dock function i called', () => {
-        ship.dock(calais);
-        expect(calais.ships).toContain(ship)
+        expect(port.ships).toContain(ship)
     })
-});
 
+    });
+
+})
