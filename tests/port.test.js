@@ -25,14 +25,21 @@ describe('port constructor', () => {
 describe('addShip function', () => {
     let calais
     let ship
+    let ship2
     beforeEach(() => {
         calais = new Port('Calais')
         ship = {}
+        ship2 = {}
+        calais.addShip(ship);
     });
 
     it('adds a ship to the port', () => {
-        calais.addShip(ship);
         expect(calais.ships).toEqual([ship])
+    });
+
+    it('can have more than 1 ship', () => {
+        calais.addShip(ship2);
+        expect(calais.ships).toEqual([ship, ship2]);
     });
 });
 

@@ -54,12 +54,16 @@ describe ('set sail function', () => {
         port = new Port ('Southampton');
         itinerary = new Itinerary(port)
         ship = new Ship(itinerary);
+        ship.setSail();
     });
 
     it('can set sail', () => {
-        ship.setSail();
         expect(ship.currentPort).toBeFalsy();
-    })
+    });
+
+    it('removes the ship object from the port obect when set sail is called', () => {
+        expect(port.ships).not.toContain(ship);
+    });
 
 });
 
