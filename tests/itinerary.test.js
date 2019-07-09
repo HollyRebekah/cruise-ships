@@ -2,7 +2,7 @@ const Itinerary = require('../src/itinerary');
 const Port = require('../src/port');
 
 describe('itinerary constructor', () => {
-    let southampton = new Port ('Southampton')
+    let southampton = jest.fn()
     let itinerary = new Itinerary (southampton)
 
     it('returns an object', () => {
