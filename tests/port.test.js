@@ -1,6 +1,4 @@
 const Port = require('../src/port');
-const Ship = require('../src/ship');
-const Itinerary = require('../src/itinerary');
 
 describe('port constructor', () => {
     let port
@@ -8,8 +6,8 @@ describe('port constructor', () => {
     let ship2 
     beforeEach(() => {
         port = new Port('Calais')
-        ship = {}
-        ship2 = {} 
+        ship = jest.fn()
+        ship2 = jest.fn()
     });
 
     it('returns an object', () => {
