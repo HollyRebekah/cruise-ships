@@ -7,9 +7,9 @@ describe('ship constructor', () => {
     let itinerary
     let ship
     beforeEach(() => {
-        port = new Port ('Southampton')
-        itinerary = new Itinerary (port)
-        ship= new Ship(itinerary)
+        port = new Port ('Southampton');
+        itinerary = new Itinerary (port);
+        ship= new Ship(itinerary);
     });
     
     it('returns an object', () => {
@@ -40,7 +40,7 @@ describe('boarding function', () => {
 describe ('set sail function', () => {
 
     beforeEach(() => {
-        ship.setSail()
+        ship.setSail();
     })
 
     it('removes port from ship when it sets sail', () => {
@@ -56,7 +56,7 @@ describe ('set sail function', () => {
 describe('dock function', () => {
 
     beforeEach(() => {
-        ship.dock(port)
+        ship.dock(port);
     });
 
     it('can dock the ship at a new port', () => {
@@ -64,7 +64,7 @@ describe('dock function', () => {
     });
 
     it('adds ship to port object when dock function i called', () => {
-        expect(port.ships).toContain(ship)
+        expect(port.ships).toContain(ship);
     })
 
     });
