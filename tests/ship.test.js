@@ -1,13 +1,29 @@
 const Ship = require('../src/ship');
-const Port = require('../src/port');
 const Itinerary = require('../src/itinerary');
 
 describe('ship constructor', () => {
-    let port
     let itinerary
     let ship
+    let port
+    let dover
     beforeEach(() => {
-        port = new Port ('Southampton');
+        const portStub =  {
+           removeShip: jest.fn(),
+           addShip: jest.fn(),
+        };
+
+        port = {
+            ...portStub,
+            name: 'port',
+            ship: []
+        };
+
+        dover = {
+            ...portStub,
+            name: 'dover',
+            ship: []
+        }
+
         itinerary = new Itinerary (port);
         ship= new Ship(itinerary);
     });
@@ -21,7 +37,7 @@ describe('ship constructor', () => {
     });
 
     it('gets added to port on instantiation',() => {
-       expect(port.ships).toContain(ship);
+       expect(port.addShip).toHaveBeenCalledWith(ship);
     });
 
 describe('boarding function', () => {
@@ -48,7 +64,7 @@ describe ('set sail function', () => {
     });
 
     it('removes the ship object from the port obect when set sail is called', () => {
-        expect(port.ships).not.toContain(ship);
+        expect(port.removeShip).toHaveBeenCalledWith(ship);
     });
 
 });
@@ -56,15 +72,15 @@ describe ('set sail function', () => {
 describe('dock function', () => {
 
     beforeEach(() => {
-        ship.dock(port);
+        ship.dock(dover);
     });
 
     it('can dock the ship at a new port', () => {
-        expect(ship.currentPort).toBe(port);
+        expect(ship.currentPort).toBe(dover);
     });
 
-    it('adds ship to port object when dock function i called', () => {
-        expect(port.ships).toContain(ship);
+    it('adds ship to port object when dock function is called', () => {
+        expect(dover.addShip).toHaveBeenCalledWith(ship);
     })
 
     });
