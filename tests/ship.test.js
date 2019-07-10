@@ -1,5 +1,4 @@
 const Ship = require('../src/ship');
-const Itinerary = require('../src/itinerary');
 
 describe('ship constructor', () => {
     let itinerary
@@ -7,14 +6,14 @@ describe('ship constructor', () => {
     let southampton
     let dover
     beforeEach(() => {
-        const portStub =  {
-           removeShip: jest.fn(),
-           addShip: jest.fn(),
+        const portStub = {
+            removeShip: jest.fn(),
+            addShip: jest.fn(),
         };
 
         southampton = {
             ...portStub,
-            name: 'port',
+            name: 'southampton',
             ship: []
         };
 
@@ -28,9 +27,9 @@ describe('ship constructor', () => {
             ports: [southampton, dover]
         };
 
-        ship= new Ship(itinerary);
+        ship = new Ship(itinerary);
     });
-    
+
     it('returns an object', () => {
         expect(ship).toBeInstanceOf(Object);
     });
@@ -39,53 +38,57 @@ describe('ship constructor', () => {
         expect(ship.currentPort).toEqual(southampton);
     });
 
-    it('gets added to port on instantiation',() => {
-       expect(southampton.addShip).toHaveBeenCalledWith(ship);
+    it('gets added to port on instantiation', () => {
+        expect(southampton.addShip).toHaveBeenCalledWith(ship);
     });
 
-describe('boarding function', () => {
+    describe('boarding function', () => {
 
-    it('takes a passenger and adds it to the ship passenger property', () => {
-        ship.boarding('Holly');
-        expect(ship.passengers).toEqual(['Holly']);
+        it('takes a passenger and adds it to the ship passenger property', () => {
+            ship.boarding('Holly');
+            expect(ship.passengers).toEqual(['Holly']);
+        });
+
+        it('can take multiple passengers', () => {
+            ship.boarding('Holly, Mo');
+            expect(ship.passengers).toEqual(['Holly', 'Mo'])
+        })
     });
 
-    it('can take multiple passengers', () => {
-        ship.boarding('Holly, Mo');
-        expect(ship.passengers).toEqual(['Holly','Mo'])
-    })
+    describe('set sail function', () => {
+
+        beforeEach(() => {
+            ship.setSail();
+
+            it('removes current port from ship when it sets sail', () => {
+                expect(ship.currentPort).toBeFalsy();
+
+            });
+
+            it('adds previous port oject to ships previous port property', () => {
+                expect(ship.previousPort).toBe(southampton);
+            })
+
+            it('removes the ship object from the port obect when set sail is called', () => {
+                expect(southampton.removeShip).toHaveBeenCalledWith(ship);
+            });
+        });
+
+    });
+
+    describe('dock function', () => {
+
+        beforeEach(() => {
+            ship.dock();
+        });
+
+        it('can dock the ship at a new port', () => {
+            expect(ship.currentPort).toBe(dover);
+        });
+
+        it('adds ship to port object when dock function is called', () => {
+            expect(dover.addShip).toHaveBeenCalledWith(ship);
+        })
+
+    });
 });
-
-describe ('set sail function', () => {
-
-    beforeEach(() => {
-        ship.setSail();
-    })
-
-    it('removes port from ship when it sets sail', () => {
-        expect(ship.currentPort).toBeFalsy();
-    });
-
-    it('removes the ship object from the port obect when set sail is called', () => {
-        expect(southampton.removeShip).toHaveBeenCalledWith(ship);
-    });
-
-});
-
-describe('dock function', () => {
-
-    beforeEach(() => {
-        ship.dock(dover);
-    });
-
-    it('can dock the ship at a new port', () => {
-        expect(ship.currentPort).toBe(dover);
-    });
-
-    it('adds ship to port object when dock function is called', () => {
-        expect(dover.addShip).toHaveBeenCalledWith(ship);
-    })
-
-    });
-
-})
