@@ -4,7 +4,7 @@ const Itinerary = require('../src/itinerary');
 describe('ship constructor', () => {
     let itinerary
     let ship
-    let port
+    let southampton
     let dover
     beforeEach(() => {
         const portStub =  {
@@ -12,7 +12,7 @@ describe('ship constructor', () => {
            addShip: jest.fn(),
         };
 
-        port = {
+        southampton = {
             ...portStub,
             name: 'port',
             ship: []
@@ -22,9 +22,12 @@ describe('ship constructor', () => {
             ...portStub,
             name: 'dover',
             ship: []
-        }
+        };
 
-        itinerary = new Itinerary (port);
+        itinerary = {
+            ports: [southampton, dover]
+        };
+
         ship= new Ship(itinerary);
     });
     
@@ -33,11 +36,11 @@ describe('ship constructor', () => {
     });
 
     it('sets the starting port property', () => {
-        expect(ship.currentPort).toEqual(port);
+        expect(ship.currentPort).toEqual(southampton);
     });
 
     it('gets added to port on instantiation',() => {
-       expect(port.addShip).toHaveBeenCalledWith(ship);
+       expect(southampton.addShip).toHaveBeenCalledWith(ship);
     });
 
 describe('boarding function', () => {
@@ -64,7 +67,7 @@ describe ('set sail function', () => {
     });
 
     it('removes the ship object from the port obect when set sail is called', () => {
-        expect(port.removeShip).toHaveBeenCalledWith(ship);
+        expect(southampton.removeShip).toHaveBeenCalledWith(ship);
     });
 
 });
