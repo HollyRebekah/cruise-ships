@@ -5,8 +5,9 @@ describe('ship constructor', () => {
     let ship
     let southampton
     let dover
+    let portStub
     beforeEach(() => {
-        const portStub = {
+        portStub = {
             removeShip: jest.fn(),
             addShip: jest.fn(),
         };
@@ -52,13 +53,14 @@ describe('ship constructor', () => {
         it('can take multiple passengers', () => {
             ship.boarding('Holly, Mo');
             expect(ship.passengers).toEqual(['Holly', 'Mo'])
-        })
+        });
     });
 
     describe('set sail function', () => {
 
         beforeEach(() => {
             ship.setSail();
+            });
 
             it('removes current port from ship when it sets sail', () => {
                 expect(ship.currentPort).toBeFalsy();
@@ -72,13 +74,17 @@ describe('ship constructor', () => {
             it('removes the ship object from the port obect when set sail is called', () => {
                 expect(southampton.removeShip).toHaveBeenCalledWith(ship);
             });
-        });
 
+            it('cannot sail beyond itinerary', () => {
+                ship.dock()
+                expect(() => ship.setSail()).toThrow('End of itinerary reached');
+            });
     });
 
     describe('dock function', () => {
 
         beforeEach(() => {
+            ship.setSail();
             ship.dock();
         });
 
@@ -88,7 +94,6 @@ describe('ship constructor', () => {
 
         it('adds ship to port object when dock function is called', () => {
             expect(dover.addShip).toHaveBeenCalledWith(ship);
-        })
-
+        });
     });
 });

@@ -13,6 +13,6 @@ Port.prototype = {
         const indexOfShip = this.ships.indexOf(ship)
         this.ships.splice(indexOfShip,1)
     }
-}
+};
 
 module.exports = Port
