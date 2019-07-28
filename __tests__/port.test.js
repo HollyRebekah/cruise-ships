@@ -1,49 +1,48 @@
 const Port = require('../src/port');
 
 describe('port constructor', () => {
-    let port
-    let ship
-    let ship2 
+  let port;
+  let ship;
+  let ship2;
+  beforeEach(() => {
+    port = new Port('Calais');
+    ship = jest.fn();
+    ship2 = jest.fn();
+  });
+
+  it('returns an object', () => {
+    expect(port).toBeInstanceOf(Object);
+  });
+
+  it('sets the name property', () => {
+    expect(port.name).toEqual('Calais');
+  });
+
+  it('has an array for ships property', () => {
+    expect(port.ships).toBeInstanceOf(Array);
+  });
+
+  describe('addShip function', () => {
     beforeEach(() => {
-        port = new Port('Calais')
-        ship = jest.fn()
-        ship2 = jest.fn()
-    });
-
-    it('returns an object', () => {
-        expect(port).toBeInstanceOf(Object);
-    });
-
-    it('sets the name property', () => {
-        expect(port.name).toEqual('Calais')
-    })
-
-    it('has an array for ships property', () => {
-        expect(port.ships).toBeInstanceOf(Array);
-    })
-
-describe('addShip function', () => {
-    beforeEach(() => {
-        port.addShip(ship);
+      port.addShip(ship);
     });
 
     it('adds a ship to the port', () => {
-        expect(port.ships).toContain(ship)
+      expect(port.ships).toContain(ship);
     });
 
     it('can have more than 1 ship', () => {
-        port.addShip(ship2)
-        expect(port.ships).toContain(ship, ship2);
+      port.addShip(ship2);
+      expect(port.ships).toContain(ship, ship2);
     });
-});
+  });
 
-describe('removeShip function', () => {
+  describe('removeShip function', () => {
     it('removes named ship from the port', () => {
-        port.addShip(ship);
-        port.addShip(ship2);
-        port.removeShip(ship);
-        expect(port.ships).not.toContain([ship]);
+      port.addShip(ship);
+      port.addShip(ship2);
+      port.removeShip(ship);
+      expect(port.ships).not.toContain([ship]);
     });
-});
-
+  });
 });
