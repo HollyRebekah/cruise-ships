@@ -1,4 +1,4 @@
-function Ship (itinerary) {
+function Ship(itinerary) {
     this.passengers = [];
     this.itinerary = itinerary;
     this.currentPort = itinerary.ports[0];
