@@ -35,10 +35,10 @@
 
     renderShip: function (ship) {
       const currentPortIndex = ship.itinerary.ports.indexOf(ship.currentPort);
-      const portElement = document.querySelector(`[data-port-index='${currentPortIndex}]`);
+      const portElement = document.querySelector(`[data-port-index = '${currentPortIndex}']`);
       const shipElement = document.querySelector('#ship');
-      shipElement.top = `${portElement.offsetTop}px`;
-      shipElement.left = `${portElement.offsetLeft}px`;
+      shipElement.style.top = `${portElement.offsetTop}px`;
+      shipElement.style.left = `${portElement.offsetLeft}px`;
     },
   };
 
