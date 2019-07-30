@@ -11,8 +11,8 @@
     },
 
     removeShip: function (ship) {
-      const indexOfShip = this.ships.indexOf(ship)
-      this.ships.splice(indexOfShip,1)
+      const indexOfShip = this.ships.indexOf(ship);
+      this.ships.splice(indexOfShip, 1);
     },
   };
 

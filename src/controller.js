@@ -16,7 +16,21 @@
       window.setInterval(() => {
         document.querySelector('#viewport').style.backgroundImage = `url('${backgrounds[backgroundCounter % backgrounds.length]}')`;
         backgroundCounter += 1;
-      }, 1000);
+      }, 500);
+    },
+
+    renderPorts: function (ports) {
+      const portsElement = document.querySelector('#ports');
+      portsElement.style.width = '0px';
+      ports.forEach((port, index) => {
+        const newPortElement = document.createElement('div');
+        newPortElement.className = 'port';
+        newPortElement.dataset.portName = port.name;
+        newPortElement.dataset.portIndex = index;
+        portsElement.appendChild(newPortElement);
+        const portsElementWidth = parseInt(portsElement.style.width, 10);
+        portsElement.style.width = `${portsElementWidth + 256}px`;
+      });
     },
   };
 
