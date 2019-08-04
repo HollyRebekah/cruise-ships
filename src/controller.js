@@ -34,7 +34,11 @@
     },
 
     renderShip: function (ship) {
-
+      const shipCurrentPortIndex = ship.itinerary.ports.indexOf(ship.currentPort);
+      const portElement = document.querySelector(`[data-port-index='${shipCurrentPortIndex}']`);
+      const shipElement = document.querySelector('#ship');
+      shipElement.style.top = `${portElement.offsetTop}px`;
+      shipElement.style.left = `${portElement.offsetLeft}px`;
     },
   };
 
