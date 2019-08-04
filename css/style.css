@@ -58,3 +58,14 @@ body {
     background-color: green;
 }
 
+#message { 
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    font-family: 'Saira Stencil One', cursive;
+    background-color: white;
+    padding: 10px, 20px;
+    border-top: 10px;
+
+}
