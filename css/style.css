@@ -41,6 +41,18 @@ body {
     position: absolute;
 }
 
+#message { 
+    padding: 16px;
+    position: absolute;
+    width:100%;
+    bottom: 0;
+    font-family: 'Saira Stencil One', cursive;
+    background-color: white;
+    border-top: 3px solid black;
+    color: black; 
+
+}
+
 #sailbutton {
     border: 0;
     padding: 10px 20px;
@@ -56,16 +68,4 @@ body {
 
 #sailbutton:focus {
     background-color: green;
-}
-
-#message { 
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    font-family: 'Saira Stencil One', cursive;
-    background-color: white;
-    padding: 10px, 20px;
-    border-top: 10px;
-
 }
