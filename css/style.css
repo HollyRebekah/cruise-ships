@@ -1,4 +1,4 @@
-html,body {
+html, body {
 
     height: 100%;
 
@@ -29,16 +29,14 @@ body {
 }
 
 #ports > .port {
-
     width: 64px;
     height: 32px;
     background-image: url("../images/port.png");
 }
 
 #ship {
-    width: 128px;
-    height: 64px;
     background-image: url("../images/ship.png");
+    width: 128px;
+    height: 69px;
     position: absolute;
-    left: 60px;
 }

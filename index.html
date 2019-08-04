@@ -9,12 +9,12 @@
     <link rel="stylesheet" href="css/normalize.css">
 </head>
 <body>
-    <div id = "viewport"> 
+    <div id = "viewport">
         <div id="ports">
         </div>
-        <div id ="ship">
-        </div>
+        <div id ="ship"></div>
     </div>
+      </button>
     <script src = "src/controller.js"></script>
     <script src = "src/port.js"></script>
     <script src = "src/itinerary.js"></script>
@@ -28,8 +28,7 @@
           new Port ('Rotterdam')
       ]); 
       controller.renderPorts(itinerary.ports);
-      const boatyMcBoatFace = new Ship (itinerary);
-      controller.renderShip(boatyMcBoatFace);
+      const ship = new Ship (itinerary);
     </script>
 </body>
 </html>

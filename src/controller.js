@@ -1,6 +1,6 @@
 /* eslint-disable func-names */
 (function exportController() {
-  function Controller() {
+  function Controller( ) {
     this.initialiseSea();
   }
 
@@ -8,7 +8,7 @@
     initialiseSea: function () {
       const backgrounds = [
         './images/water0.png',
-        '/images/water1.png',
+        './images/water1.png',
       ];
 
       let backgroundCounter = 0;
@@ -31,14 +31,6 @@
         const portsElementWidth = parseInt(portsElement.style.width, 10);
         portsElement.style.width = `${portsElementWidth + 256}px`;
       });
-    },
-
-    renderShip: function (ship) {
-      const currentPortIndex = ship.itinerary.ports.indexOf(ship.currentPort);
-      const portElement = document.querySelector(`[data-port-index = '${currentPortIndex}']`);
-      const shipElement = document.querySelector('#ship');
-      shipElement.style.top = `${portElement.offsetTop}px`;
-      shipElement.style.left = `${portElement.offsetLeft}px`;
     },
   };
 
