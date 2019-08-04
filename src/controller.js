@@ -32,6 +32,10 @@
         portsElement.style.width = `${portsElementWidth + 256}px`;
       });
     },
+
+    renderShip: function (ship) {
+
+    },
   };
 
   if (typeof module !== 'undefined' && module.exports) {
