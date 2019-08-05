@@ -6,11 +6,6 @@
     document.querySelector('#sailbutton').addEventListener('click', () => {
       this.setSail();
     });
-    document.querySelector('#sailbutton').addEventListener('click', () => {
-      const headUp = document.querySelector('#headup');
-      const viewport = document.querySelector('#viewport');
-      viewport.removeChild(headUp);
-    });
   }
 
   Controller.prototype = {
@@ -60,7 +55,7 @@
       } else {
         this.renderMessageBox(`Now departing ${ship.currentPort.name}`);
         setTimeout(() => {
-          this.renderHeadupMessage(`Current Port: ${ship.itinerary.ports[nextPortIndex].name}  Previous Port: ${ship.currentPort.name}`);
+          this.renderHeadupMessage(`Current Port: ${ship.itinerary.ports[nextPortIndex].name} Previous Port: ${ship.currentPort.name}`);
         }, 3500);
       }
 
