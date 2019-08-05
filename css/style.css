@@ -18,7 +18,8 @@ body {
     height: 256px;
     position: relative;
     overflow-x: auto;
-    background-image: url("../images/water0.png");  
+    background-image: url("../images/water0.png"); 
+    padding: 10px;
 }
 
 #ports {
@@ -68,4 +69,14 @@ body {
 
 #sailbutton:focus {
     background-color: green;
+}
+
+#headup {
+    background-color: black;
+    color:white;
+    padding: 10px 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
 }

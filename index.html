@@ -10,14 +10,14 @@
     <link href="https://fonts.googleapis.com/css?family=Saira+Stencil+One&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id = "viewport">
+      <div id = "viewport">
+        <div id = "headup"> </div>
         <div id="ports">
         </div>
         <div id ="ships">
         </div>
         <button id = "sailbutton">Set Sail!</button>
-    </div>
-    
+      </div>
     <script src = "src/controller.js"></script>
     <script src = "src/port.js"></script>
     <script src = "src/itinerary.js"></script>
@@ -34,6 +34,7 @@
       const controller = new Controller(ship);
       controller.renderPorts(itinerary.ports);
       controller.renderShip();
+      controller.renderHeadupMessage(`Current Port: ${ship.currentPort.name}`);
     </script>
 </body>
 </html>
